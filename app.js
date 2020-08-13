@@ -1,21 +1,37 @@
-// This code sample uses the 'node-fetch' library:
-// https://www.npmjs.com/package/node-fetch
-const fetch = require('node-fetch');
+const express = require('express');
+const config = require('config');
+const { fetchAPI } = require("./local_modules/requestAPI/request");
+const mySQLconnection = require("./local_modules/mySql/mysql");
 
-fetch('https://your-domain.atlassian.com/rest/api/3/jql/autocompletedata', {
-  method: 'GET',
-  headers: {
-    'Authorization': `Basic ${Buffer.from(
-      'email@example.com:<api_token>'
-    ).toString('base64')}`,
-    'Accept': 'application/json'
-  }
-})
-  .then(response => {
-    console.log(
-      `Response: ${response.status} ${response.statusText}`
+const app = express();
+  app.use("/api/data", require("./routes/data.routes"));
+ app.use("/api/filter", require("./routes/filter.routes"));
+
+
+const PORT = config.get("port") || 5000;
+
+async function start() {
+  try {
+    
+    const connection = mySQLconnection();
+
+   /*  connection.query(
+      "SELECT table_name FROM information_schema.tables;",
+      function (error, results, fields) {
+        if (error) throw error;
+        // connected!
+        console.log(results);
+
+      }
     );
-    return response.text();
-  })
-  .then(text => console.log(text))
-  .catch(err => console.error(err));
+ */
+    app.listen(PORT, () =>
+      console.log(`server was started on port ${PORT} ...`)
+    );
+  } catch (e) {
+    console.log("error", e.message);
+    proces.exit(1);
+  }
+}
+
+start();

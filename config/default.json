@@ -1,0 +1,14 @@
+{
+  "APItoken": "MBhyz4AX0Ev8776f6Vpa16F2",
+  "emial": "testtaskmail@rambler.ru",
+  "domainPrefix": "test-task-saas-jet",
+  "mainDomain": "atlassian.net",
+  "port": "5000",
+  "domain": "test-task-saas-jet.atlassian.net",
+  "mysql": {
+    "host": "localhost",
+    "user": "root",
+    "password": "password",  
+    "database": "test-task"
+  }
+}
