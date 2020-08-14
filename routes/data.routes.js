@@ -1,4 +1,5 @@
 const { Router, request } = require("express");
+const { logAction } = require("../local_modules/logger/logger");
 const bodyParser = require("body-parser");
 const { fetchAPI } = require("../local_modules/requestAPI/request");
 const config = require("config");
@@ -12,7 +13,6 @@ const router = Router();
 const today = new Date();
 
 const statuses = {
-  // можна й через API але поки що хватить заглушки
   "3": '"In Progress"',
   "10000": '"To Do"',
   "10001": '"Selected for Development"',
@@ -40,7 +40,7 @@ router.use(bodyParser.json());
 
 // /api/data/issueData
 router.get("/issueData/:filter", async (req, res) => {
-  console.log(req.params["filter"]);
+  logAction("useFilter", { filter: req.params["filter"] });
   res.filter = req.params["filter"];
 
   fetchAPI(
@@ -120,8 +120,8 @@ function generateRespData(...arguments) {
             ) {
               const duedate = new Date(issue.fields.duedate);
               const difference =
-              (today.getTime() - duedate.getTime()) / (1000 * 3600 * 24);
-              console.log(today.getTime() , duedate.getTime())
+                (today.getTime() - duedate.getTime()) / (1000 * 3600 * 24);
+
               if (difference > 3) {
                 generatedIssues[accountId][status][type][priority][
                   "isRed"
@@ -162,6 +162,7 @@ function generateRespData(...arguments) {
   result++;
   if (result > arguments[1]) {
     res.json(generatedIssues);
+    logAction("table was Generated", generatedIssues);
     iterator = 1;
     result = 0;
     generatedIssues = {};

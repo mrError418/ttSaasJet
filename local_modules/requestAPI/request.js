@@ -1,5 +1,7 @@
 const fetch = require("node-fetch");
 const congit = require("config");
+const {onError} = require('../logger/logger')
+
 const domainPrefix = congit.get("domainPrefix");
 const APItoken = congit.get("APItoken");
 const emial = congit.get("emial");
@@ -40,8 +42,8 @@ function fetchAPI(
       onresponse({text, responseMessage})
     return {text, responseMessage}
     })
-    .catch((err) => console.log(err));
-  //.catch((err) => onerror(err));
+   // .catch((err) => console.log(error.stack));
+  .catch((err) => onError(err, {path,requestData}));
 }
 
 module.exports = { fetchAPI };

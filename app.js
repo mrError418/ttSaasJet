@@ -6,6 +6,8 @@ const mySQLconnection = require("./local_modules/mySql/mysql");
 const app = express();
   app.use("/api/data", require("./routes/data.routes"));
  app.use("/api/filter", require("./routes/filter.routes"));
+ app.use("/api/action", require("./routes/action.routes"));
+ app.use("/api/log", require("./routes/log.routes"));
 
 
 const PORT = config.get("port") || 5000;
@@ -23,8 +25,8 @@ async function start() {
         console.log(results);
 
       }
-    );
- */
+    ); */
+
     app.listen(PORT, () =>
       console.log(`server was started on port ${PORT} ...`)
     );

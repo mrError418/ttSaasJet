@@ -7,7 +7,7 @@ const router = Router();
 
 router.use(bodyParser.json());
 
-// /api/filter/
+// /api/action/
 router.get(
   "/",
 
