@@ -3,5 +3,5 @@
 
 лінка на action =>> localhost:5000/api/log/actionst 
 
-лінка на error =>>  localhost:5000/api/log/errorst   )))
+лінка на error =>>  localhost:5000/api/log/errorst   
 
