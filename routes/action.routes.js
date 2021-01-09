@@ -9,6 +9,7 @@ router.use(bodyParser.json());
 // /api/action/
 router.post(  "/",  async (req, res) => {
      logAction('go by link', {link : req.body.link})
+   
      res.sendStatus(201)
   }
 );

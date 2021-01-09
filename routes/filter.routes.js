@@ -7,7 +7,7 @@ const router = Router();
 
 router.use(bodyParser.json());
 
-// /api/action/
+//  /api/filter
 router.get(
   "/",
 
@@ -16,7 +16,7 @@ router.get(
       "rest/api/3/filter",
       "GET",
       {},
-      // responseHendler.bind(this)
+      
       (response) => {
         res.json(
           response.text.map((elem) => {

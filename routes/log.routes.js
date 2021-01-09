@@ -14,6 +14,7 @@ router.get("/:logTable", async (req, res) => {
 
   if (tables.includes(tableName))  //he he BOY :)
 {
+  console.log(connection);
     connection.query(
       `select * from ${tableName} order by id desc limit 100;`,
 

@@ -1,0 +1,106 @@
+@font-face {
+  font-family: "Tahoma";
+  src: url("auth/fonts/tahoma.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+
+/**scroll bar*/
+/* width */
+::-webkit-scrollbar {
+  width: 2px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #e8eaec;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/**scroll bar end*/
+body {
+  background-color: #e7ebf0;
+  font-family: Tahoma;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.header {
+  max-width: 1010px;
+  margin: 0 auto;
+  height: 48px;
+  background: #5682a3;
+  font-size: 14px;
+  color: white;
+}
+
+.header-menu__hower {
+  float: left;
+  width: 31%;
+  overflow-x: hidden;
+  white-space: nowrap;
+}
+
+.chat {
+  background: #fff;
+  max-width: 1010px;
+  min-width: 300px;
+  margin: 0 auto;
+  -webkit-box-shadow: 0px 1px 0 #dfe5ec;
+  -moz-box-shadow: 0px 1px 0 #dfe5ec;
+  box-shadow: 0px 1px 0 #dfe5ec;
+  border-radius: 0 0 3px 3px;
+  border-left: 1px solid #dfe5ec;
+  border-right: 1px solid #dfe5ec;
+  border-bottom: 1px solid #d2dbe3;
+  overflow: hidden;
+  overflow-y: auto;
+  font-family: Tahoma;
+  height: 90vh;
+}
+
+select {
+  font: inherit;
+  margin: 20px auto;
+  display: block;
+  width: 40%;
+}
+
+.resultTable {
+  margin: 0 10%;
+}
+
+#loading-image {
+  margin: 0 auto;
+}
+
+#loading {
+  display: none;
+}
+
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 80%;
+  margin: 0 auto;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+}
+th > img {
+  width: 7em;
+  margin: 0 auto;
+}

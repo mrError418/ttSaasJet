@@ -29,14 +29,15 @@ function fetchAPI(
 
   fetch(`https://${domainPrefix}.atlassian.net/${path}`, requestData)
     .then((response) => {
-      // console.log(`Response: ${response.status} ${response.statusText}`);
-      console.log(response.status);
+      
       return response.text();
     })
     .then((text) => {
-     // console.log(text);
-      if (text)
-       return JSON.parse(text);
+     
+      if (text){
+       
+        return JSON.parse(text);
+      }
     })
     .then((text) => {
       onresponse({text, responseMessage})

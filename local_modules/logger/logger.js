@@ -1,21 +1,25 @@
-const { request } = require("express"); // Читав про вінстон, ніколи не курив тому не використав
+const { request } = require("express"); 
 
 const mySQLconnection = require("../mySql/mysql");
 const connection = mySQLconnection();
 
 function onError(error, details) {
+  console.log (error, details);
+  process.exit();
   connection.query(
     `INSERT INTO errorst(
         lable ,
         error 
     )
     VALUES(
-        '${error}' ,
-        '${JSON.stringify(details)}'
+        '"${error}"' ,
+        '"${JSON.stringify(details)}"
     );`,
 
     (error, results, fields) => {
-      if (error) throw error;
+      if (error) 
+      //throw error;
+     console.log('problem during creation' , new Date())
       // connected!
       }
   );
@@ -35,6 +39,7 @@ function logAction(action, details) {
         (error, results, fields) => {
           if (error) throw error;
           // connected!
+          
           }
   )
 }

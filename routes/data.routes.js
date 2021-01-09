@@ -5,28 +5,39 @@ const { fetchAPI } = require("../local_modules/requestAPI/request");
 const config = require("config");
 
 const jqlBegin =
-  "https://test-task-saas-jet.atlassian.net/browse/QB12345678-2054?jql=";
+  "https://justbesttest.atlassian.net/browse/UI12345678-3201?jql=";
 let generatedIssues = {};
 let iterator = 1;
 let result = 0;
 const router = Router();
 const today = new Date();
 
+/* 
+old
 const statuses = {
   "3": '"In Progress"',
   "10000": '"To Do"',
   "10001": '"Selected for Development"',
   "10003": '"QA"',
   "10004": '"On Sale"',
+}; */
+
+const statuses = {
+  "3": '"In Progress"',
+  "10003": '"To Do"',
+  "10004": '"Selected for Development"',
+  "10005": '"Done"',
+  "10006": '"QA"',
+  "10007": '"On Sale"',
 };
 const types = {
-  "10001": '"Story"',
-  "10002": '"Task"',
-  "10004": '"Bug"',
-  "10003": '"Sub-task"',
+  "10006": '"Story"',
+  "10007": '"Task"',
+  "10009": '"Bug"',
+  "10008": '"Sub-task"',
   "10000": '"Epic"',
-  "10005": '"Spec-type😋"',
-  "10006": '"7-line"',
+  "10010": '"Spec-type😋"',
+  "10011": '"7-line"',
 };
 const priorities = {
   "1": "Highest",
