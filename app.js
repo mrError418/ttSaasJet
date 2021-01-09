@@ -1,7 +1,7 @@
 const express = require("express");
 const config = require("config");
 const { fetchAPI } = require("./local_modules/requestAPI/request");
-const mySQLconnection = require("./local_modules/mySql/mysql");
+const handleDisconnect = require("./local_modules/mySql/mysql");
 
 const app = express();
 app.use("/api/action", require("./routes/action.routes"));
@@ -33,25 +33,4 @@ async function start() {
 
 start();
 
-function handleDisconnect() {
-  const connection = mySQLconnection();   
-                                                  
 
-  connection.connect(function(err) {              
-    if(err) {                                     
-      console.log('error when connecting to db:', err);
-      setTimeout(handleDisconnect, 2000); 
-    }                                     
-  });                                     
-                                          
-  connection.on('error', function(err) {
-    console.log( 'PROTOCOL_CONNECTION_LOST')                     
-  //  console.log('db error', err);
-    if(err.code === 'PROTOCOL_CONNECTION_LOST') { 
-      handleDisconnect();    
-      console.log( 'PROTOCOL_CONNECTION_LOST')                     
-    } else {                                      
-      throw err;                                  
-    }
-  });
-}

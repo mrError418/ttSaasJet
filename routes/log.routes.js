@@ -1,7 +1,8 @@
 const { Router } = require("express");
 const bodyParser = require("body-parser");
-const mySQLconnection = require("../local_modules/mySql/mysql");
-const connection = mySQLconnection();
+const handleDisconnect = require("../local_modules/mySql/mysql");
+const connection = (handleDisconnect())();
+
 
 const tables = ["errorst", "actionst"];  
 const router = Router();
@@ -12,11 +13,11 @@ router.use(bodyParser.json());
 router.get("/:logTable", async (req, res) => {
   const tableName = req.params["logTable"];
 
-  if (tables.includes(tableName))  //he he BOY :)
+  if (tables.includes(tableName))  
 {
-  console.log(connection);
+
     connection.query(
-      `select * from ${tableName} order by id desc limit 100;`,
+      `select * from ${tableName} order by id desc limit 1000;`,
 
       (error, results, fields) => {
         if (error) throw error;

@@ -90,7 +90,7 @@ function renderTable(data) {
 
       </tr>`;
   }
-  console.log(FilterResultString);
+ 
 
   elem.innerHTML =
     `   

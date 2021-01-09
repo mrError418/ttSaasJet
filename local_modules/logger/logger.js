@@ -1,7 +1,8 @@
 const { request } = require("express"); 
 
-const mySQLconnection = require("../mySql/mysql");
-const connection = mySQLconnection();
+
+const handleDisconnect = require("../mySql/mysql");
+const connection = (handleDisconnect())();
 
 function onError(error, details) {
   console.log (error, details);

@@ -74,7 +74,7 @@ function loadData(...arguments) {
       `/rest/api/3/search?${arguments[0].filter}&maxResults=100&startAt=${step}`,
       "GET",
       {},
-      // responseHendler.bind(this)
+   
       generateRespData.bind(this, arguments[0], iterator)
     );
   } while (i < iterator);
@@ -83,7 +83,7 @@ function loadData(...arguments) {
 function generateRespData(...arguments) {
   const res = arguments[0];
   const data = arguments[2];
-  //console.log(arguments[1],arguments[2] ,"\n")
+  
 
   for (issue of data.text.issues) {
     //count account ID
