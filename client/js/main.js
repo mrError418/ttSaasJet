@@ -1,4 +1,4 @@
-const domain = "http://18.184.115.160:5000";
+const domain = "http://18.184.115.160:5000/";
 
 window.onload = function () {
   loadFilters();
@@ -61,7 +61,7 @@ function generate2florTable(data) {
 
 function renderTable(data) {
   document.querySelector("#loading").style.display = "none";
-  document.querySelector(".DataTable").style.display = "block";
+  document.querySelector(".DataTable").style.display = "table";
 
   let elem = document.querySelector(".DataTable");
   let FilterResultString ='';
