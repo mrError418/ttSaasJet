@@ -43,7 +43,7 @@ function fetchAPI(
       onresponse({text, responseMessage})
     return {text, responseMessage}
     })
-   // .catch((err) => console.log(error.stack));
+
   .catch((err) => onError(err, {path,requestData}));
 }
 

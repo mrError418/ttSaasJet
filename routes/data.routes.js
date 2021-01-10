@@ -12,39 +12,31 @@ let result = 0;
 const router = Router();
 const today = new Date();
 
-/* 
-old
-const statuses = {
-  "3": '"In Progress"',
-  "10000": '"To Do"',
-  "10001": '"Selected for Development"',
-  "10003": '"QA"',
-  "10004": '"On Sale"',
-}; */
+
 
 const statuses = {
-  "3": '"In Progress"',
-  "10003": '"To Do"',
-  "10004": '"Selected for Development"',
-  "10005": '"Done"',
-  "10006": '"QA"',
-  "10007": '"On Sale"',
+  3: '"In Progress"',
+  10003: '"To Do"',
+  10004: '"Selected for Development"',
+  10005: '"Done"',
+  10006: '"QA"',
+  10007: '"On Sale"',
 };
 const types = {
-  "10006": '"Story"',
-  "10007": '"Task"',
-  "10009": '"Bug"',
-  "10008": '"Sub-task"',
-  "10000": '"Epic"',
-  "10010": '"Spec-type😋"',
-  "10011": '"7-line"',
+  10006: '"Story"',
+  10007: '"Task"',
+  10009: '"Bug"',
+  10008: '"Sub-task"',
+  10000: '"Epic"',
+  10010: '"Spec-type😋"',
+  10011: '"7-line"',
 };
 const priorities = {
-  "1": "Highest",
-  "2": "High",
-  "3": "Medium",
-  "4": "Low",
-  "5": "Lowest",
+  1: "Highest",
+  2: "High",
+  3: "Medium",
+  4: "Low",
+  5: "Lowest",
 };
 
 router.use(bodyParser.json());
@@ -58,23 +50,24 @@ router.get("/issueData/:filter", async (req, res) => {
     `/rest/api/3/search?${req.params["filter"]}`,
     "GET",
     {},
-    // responseHendler.bind(this)
     loadData.bind(this, res)
   );
+
+
 });
 
 function loadData(...arguments) {
-  //arguments[0].json(arguments[1]);
-
   let i = 0;
   iterator = arguments[1].text.total / 100;
   do {
     const step = i++ * 100;
     fetchAPI(
-      `/rest/api/3/search?${arguments[0].filter}&maxResults=100&startAt=${step}`,
+      `/rest/api/3/search?jql=${encodeURI(
+        arguments[0].filter
+      )}&maxResults=100&startAt=${step}`,
       "GET",
       {},
-   
+
       generateRespData.bind(this, arguments[0], iterator)
     );
   } while (i < iterator);
@@ -83,7 +76,6 @@ function loadData(...arguments) {
 function generateRespData(...arguments) {
   const res = arguments[0];
   const data = arguments[2];
-  
 
   for (issue of data.text.issues) {
     //count account ID

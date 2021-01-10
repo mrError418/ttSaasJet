@@ -2,11 +2,11 @@ const { request } = require("express");
 
 
 const handleDisconnect = require("../mySql/mysql");
-const connection = (handleDisconnect())();
 
 function onError(error, details) {
+  let connection = (handleDisconnect())();
+
   console.log (error, details);
-  process.exit();
   connection.query(
     `INSERT INTO errorst(
         lable ,
@@ -24,9 +24,12 @@ function onError(error, details) {
       // connected!
       }
   );
+
+  connection.end();
 }
 
 function logAction(action, details) {
+  let connection = (handleDisconnect())();
   connection.query(
     `INSERT INTO actionst(
             action ,
@@ -43,6 +46,8 @@ function logAction(action, details) {
           
           }
   )
+
+  connection.end();
 }
 
 module.exports = { onError, logAction };
