@@ -1,6 +1,5 @@
 const express = require("express");
 const config = require("config");
-const { fetchAPI } = require("./local_modules/requestAPI/request");
 const handleDisconnect = require("./local_modules/mySql/mysql");
 
 const app = express();
