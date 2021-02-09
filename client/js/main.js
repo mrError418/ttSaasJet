@@ -1,4 +1,4 @@
-const domain = "http://18.184.115.160:5000";
+const domain = "http://35.158.179.102:5000";
 
 window.onload = function () {
   loadFilters();
